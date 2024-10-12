@@ -48,7 +48,7 @@ public class characters : MonoBehaviour
     IEnumerator Run()
     {
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(6);
 
         if(UnityEngine.Random.Range(0, 11)%2==0)
         {
