@@ -5,9 +5,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
+
+
+
     void Start()
     {
-        
+        StartCoroutine(startFire());
+
     }
 
     // Update is called once per frame
@@ -15,4 +19,19 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+
+    IEnumerator startFire()
+    {
+
+        yield return new WaitForSeconds(9);
+
+        // start alarms
+
+    }
+
+
+
+
+
 }
