@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class fire : MonoBehaviour
 {
@@ -10,11 +11,13 @@ public class fire : MonoBehaviour
     private ParticleSystemRenderer psr;
     [SerializeField] private float minSize=0.1f;
     [SerializeField] private float speed;
-
+    [SerializeField] UnityEvent action;
     public bool easlyOff = false;
 
+    bool isEventStart;
     void Start()
     {
+        isEventStart=false;
         particle = GetComponent<ParticleSystem>();
         psr = GetComponent<ParticleSystemRenderer>();
     }
@@ -24,7 +27,11 @@ public class fire : MonoBehaviour
     {
         psr.minParticleSize = minSize;
 
-
+        if(minSize < 0.4 && isEventStart==false)
+        {
+            action?.Invoke();
+            isEventStart = true;
+        }
         if (minSize < 0.1)
         {
             transform.parent.gameObject.SetActive(false);

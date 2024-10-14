@@ -443,6 +443,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "FireOff",
+                    "type": "Button",
+                    "id": "d4e340da-9637-4630-bdd5-955519303d25",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -674,6 +683,17 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Grip Rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3e09aa3d-d30b-4563-a9ce-5ad94d2e23b5",
+                    "path": "<XRController>{LeftHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FireOff",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -1133,6 +1153,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "FireOff",
+                    "type": "Button",
+                    "id": "5b25c6a2-f14a-463e-8b6e-f8d05f9dc3ba",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Rotation",
                     "type": "Value",
                     "id": "ee6bf5bf-bb0a-4a50-8327-cb654b19e298",
@@ -1470,6 +1499,17 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Grip Rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3db90087-13cc-40f3-81db-c071cb43e476",
+                    "path": "<XRController>{RightHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FireOff",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
