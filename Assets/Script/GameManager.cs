@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
         {
             waterParticles.SetActive(false);
             powderParticles.SetActive(false);
-            Debug.Log("both off");
+           // Debug.Log("both off");
 
 
         }

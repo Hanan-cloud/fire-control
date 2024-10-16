@@ -11074,6 +11074,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 547229428}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &6135515437489116705
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1218732555452138799, guid: ba26a8de4eb1dfd4c8ec8a585ba2c1c9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.661
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218732555452138799, guid: ba26a8de4eb1dfd4c8ec8a585ba2c1c9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.7636001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218732555452138799, guid: ba26a8de4eb1dfd4c8ec8a585ba2c1c9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.294
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218732555452138799, guid: ba26a8de4eb1dfd4c8ec8a585ba2c1c9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218732555452138799, guid: ba26a8de4eb1dfd4c8ec8a585ba2c1c9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218732555452138799, guid: ba26a8de4eb1dfd4c8ec8a585ba2c1c9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218732555452138799, guid: ba26a8de4eb1dfd4c8ec8a585ba2c1c9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218732555452138799, guid: ba26a8de4eb1dfd4c8ec8a585ba2c1c9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218732555452138799, guid: ba26a8de4eb1dfd4c8ec8a585ba2c1c9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218732555452138799, guid: ba26a8de4eb1dfd4c8ec8a585ba2c1c9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2395565187024472803, guid: ba26a8de4eb1dfd4c8ec8a585ba2c1c9,
+        type: 3}
+      propertyPath: m_Name
+      value: VRLeverGripped
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ba26a8de4eb1dfd4c8ec8a585ba2c1c9, type: 3}
 --- !u!114 &6720061550881514980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11429,3 +11497,4 @@ SceneRoots:
   - {fileID: 1519520462}
   - {fileID: 876656115}
   - {fileID: 3953970342977539823}
+  - {fileID: 6135515437489116705}
