@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class fire : MonoBehaviour
+public class fire2 : MonoBehaviour
 {
-    // Start is called before the first frame update
-
     ParticleSystem particle;
     private ParticleSystemRenderer psr;
-    [SerializeField] private float minSize=0.1f;
+    [SerializeField] private float minSize = 0.1f;
     [SerializeField] private float speed;
     [SerializeField] UnityEvent action;
     public bool easlyOff = false;
 
     bool isEventStart;
     [SerializeField] private string nameTag;
+    public static bool canScaleDown= false;
 
     void Start()
     {
-        isEventStart=false;
+        canScaleDown = false;
+        isEventStart = false;
         particle = GetComponent<ParticleSystem>();
         psr = GetComponent<ParticleSystemRenderer>();
     }
@@ -29,7 +29,11 @@ public class fire : MonoBehaviour
     {
         psr.minParticleSize = minSize;
 
-        if(minSize < 0.4 && isEventStart==false)
+        if (canScaleDown)
+        {
+            minSize -= Time.deltaTime * speed;
+        }
+        if (minSize < 0.4 && isEventStart == false)
         {
             action?.Invoke();
             isEventStart = true;
@@ -42,12 +46,5 @@ public class fire : MonoBehaviour
 
 
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag(nameTag))
-        {
-            minSize -= Time.deltaTime*speed;
-        }
-    }
-
+  
 }
