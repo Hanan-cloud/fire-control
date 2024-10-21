@@ -31,6 +31,11 @@ public class GameManager : MonoBehaviour
 
 
 
+    public bool CanShuDownElec=false;
+    public bool Canclosewindow=false;
+    public bool CanShutDownFire2=false;
+
+
     public bool isWaterOn = false;
 
     XRIDefaultInputActions input;
