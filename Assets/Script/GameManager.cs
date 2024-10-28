@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -12,6 +14,7 @@ public class GameManager : MonoBehaviour
 
 
     [SerializeField] GameObject fire1Paper;
+    [SerializeField] GameObject door;
 
 
 
@@ -20,20 +23,22 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject[] smallfires;
 
     [SerializeField] GameObject fireElectrics;
+    [SerializeField] GameObject firstfire;
 
     public GameObject grapping;
 
     public GameObject powder;
     public GameObject water;
-    
+
     public GameObject powderParticles;
     public GameObject waterParticles;
+    [SerializeField] UnityEvent closeWindowAction;
+    [SerializeField] UnityEvent closeElceAction;
 
 
-
-    public bool CanShuDownElec=false;
-    public bool Canclosewindow=false;
-    public bool CanShutDownFire2=false;
+    public bool CanShuDownElec = false;
+    public bool CancloseWindow = false;
+    public bool CanShutDownFire2 = false;
 
 
     public bool isWaterOn = false;
@@ -45,15 +50,24 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine(startFire());
 
+        CancloseWindow = false;
+        CanShuDownElec = false;
+        CanShutDownFire2 = false;
 
         input.XRILeftHand.FireOff.started += startWater;
         input.XRIRightHand.FireOff.started += startWater;
 
 
-        input.XRILeftHand.FireOff.canceled+= closeWater;
+        input.XRILeftHand.FireOff.canceled += closeWater;
         input.XRIRightHand.FireOff.canceled += closeWater;
 
+
+        input.XRIRightHand.Restart.performed += toScene;
+
     }
+
+
+
 
     private void closeWater(InputAction.CallbackContext obj)
     {
@@ -69,8 +83,13 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void toScene(InputAction.CallbackContext obj)
+    {
+        SceneManager.LoadScene(0);
 
-    public void  GraapingSet(GameObject go)
+    }
+
+    public void GraapingSet(GameObject go)
     {
         grapping = go;
     }
@@ -85,7 +104,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
-        if (isWaterOn) { 
+        if (isWaterOn) {
 
             if (grapping == powder)
             {
@@ -111,14 +130,30 @@ public class GameManager : MonoBehaviour
         {
             waterParticles.SetActive(false);
             powderParticles.SetActive(false);
-           // Debug.Log("both off");
+            // Debug.Log("both off");
 
 
         }
     }
 
-        
+
+    public void SetCancloseWindow()
+    {
+        CancloseWindow = true;
+    }
     
+    public void SetCanShuDownElec()
+    {
+        CanShuDownElec  = true;
+    }    
+    
+    public void SetCanShutDownFire2()
+    {
+
+        if (CanShuDownElec == false) return;
+        CanShutDownFire2 = true;
+        closeElceAction?.Invoke();
+    }
 
    void OnEnable()
     {
@@ -132,16 +167,31 @@ public class GameManager : MonoBehaviour
     {
         input.XRILeftHand.Disable();
         input.XRIRightHand.Disable();
+
+
+
+        input.XRILeftHand.FireOff.started -= startWater;
+        input.XRIRightHand.FireOff.started -= startWater;
+
+
+        input.XRILeftHand.FireOff.canceled -= closeWater;
+        input.XRIRightHand.FireOff.canceled -= closeWater;
+
+        input.XRIRightHand.Restart.performed -= toScene;
+
     }
     IEnumerator startFire()
     {
 
         yield return new WaitForSeconds(2);
+        firstfire.SetActive(true);
+        yield return new WaitForSeconds(3);
         alarm.SetActive(true);
 
 
         yield return new WaitForSeconds(3);
 
+        door.SetActive(false);
         scream.SetActive(true);
         // start alarms
 
@@ -156,9 +206,15 @@ public class GameManager : MonoBehaviour
     
     public void CloseFireSequence()
     {
-
-        StartCoroutine(fireSequenceOff());
+        if (CancloseWindow)
+        {
+            StartCoroutine(fireSequenceOff());
+            closeWindowAction?.Invoke();
+        }
     }
+
+
+ 
 
 
     IEnumerator fireSequence()
@@ -183,7 +239,7 @@ public class GameManager : MonoBehaviour
             smallfires[i].GetComponent<SmallFire>().SetFireDown=true;
 
 
-            if(i==4)
+            if(i==7)
             fireElectrics.SetActive(true);
         }
 

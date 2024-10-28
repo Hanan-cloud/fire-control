@@ -12,14 +12,12 @@ public class fire2 : MonoBehaviour
     [SerializeField] UnityEvent action;
     public bool easlyOff = false;
 
-    bool isEventStart;
     [SerializeField] private string nameTag;
     public static bool canScaleDown= false;
 
     void Start()
     {
         canScaleDown = false;
-        isEventStart = false;
         particle = GetComponent<ParticleSystem>();
         psr = GetComponent<ParticleSystemRenderer>();
     }
@@ -33,11 +31,7 @@ public class fire2 : MonoBehaviour
         {
             minSize -= Time.deltaTime * speed;
         }
-        if (minSize < 0.4 && isEventStart == false)
-        {
-            action?.Invoke();
-            isEventStart = true;
-        }
+     
         if (minSize < 0.1)
         {
             transform.parent.gameObject.SetActive(false);
@@ -45,6 +39,10 @@ public class fire2 : MonoBehaviour
     }
 
 
+    private void OnDisable()
+    {
+        action?.Invoke();
 
-  
+    }
+
 }

@@ -20,7 +20,7 @@ public class characters : MonoBehaviour
         anim = GetComponent<Animator>();
         StartCoroutine(Run());
 
-        agent.stoppingDistance = UnityEngine.Random.Range(0, 7);
+        agent.stoppingDistance = UnityEngine.Random.Range(1, 3);
 
     }
 
@@ -48,7 +48,7 @@ public class characters : MonoBehaviour
     IEnumerator Run()
     {
 
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(8);
 
         if(UnityEngine.Random.Range(0, 11)%2==0)
         {
