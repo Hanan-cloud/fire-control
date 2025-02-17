@@ -235,7 +235,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < smallfires.Length; i++)
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.5f);
             smallfires[i].GetComponent<SmallFire>().SetFireDown=true;
 
 
